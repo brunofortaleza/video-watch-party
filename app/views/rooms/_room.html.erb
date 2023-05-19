@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag('rooms') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2 class="text-center mt-4"><%= @room.name %></h2>
+      <div class="video-container">
+        <div class="embed-responsive embed-responsive-16by9 youtube-video">
+          <iframe width="560" height="315" src="//www.youtube.com/embed/<%= YouTubeRails.extract_video_id(@room.video_url) %>" allowfullscreen></iframe>
+          <div class="card-body">
+            <h6 class="card-title">Visualizações: <%= @room.views %></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h4 class="text-center mt-4">Chat</h4>
+      <div class="chat-container card-body d-flex flex-column shadow-sm p-3 mb-5 bg-body rounded" >
+        <%= turbo_stream_from @room %>
+        <div id="messages"></div>
+        <%= render partial: 'messages/form' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="text-center mt-4">Comentários</h4>
+      <div class="comment-container shadow-sm p-3 mb-5">
+        <%= render partial: 'comments/form' %>
+        <br>
+        <%= render partial: 'comments/comment' %>
+      </div>
+    </div>
+  </div>
+</div>
