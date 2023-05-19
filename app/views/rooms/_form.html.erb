@@ -1,0 +1,18 @@
+<%= form_with(model: room, class: 'mt-4') do |form| %>
+
+<div class="mb-3">
+  <%= form.label :name, class: 'form-label' %>
+  <%= form.text_field :name, class: 'form-control' %>
+</div>
+
+<div class="mb-3">
+  <%= form.label :video_url, class: 'form-label' %>
+  <%= form.text_field :video_url, class: 'form-control' %>
+</div>
+
+<div class="alert alert-info">
+  Adicione um link do Youtube copiado do navegador no campo acima.
+</div>
+
+<%= form.submit 'Criar Sala', class: 'btn btn-primary' %>
+<% end %>

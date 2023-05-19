@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>Salas</h1>
+
+  <div class="row mb-3">
+    <div class="col-12 col-md-6">
+      <%= search_form_for @q, class: "d-flex" do |f| %>
+        <%= f.text_field :name_cont, class: "form-control me-2", placeholder: "Buscar por nome da sala..." %>
+        <%= button_tag type: :submit, class: "btn btn-outline-success" do %>
+          Pesquisar
+        <% end %>
+        <%= link_to rooms_path, class: "btn btn-outline-secondary ms-2" do %>
+          Limpar
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= link_to "Criar Nova Sala", new_room_path, class: "btn btn-primary float-end" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @rooms.each do |room| %>
+      <div class="col-md-4">
+        <div class="card mb-4">
+          <div class="embed-responsive embed-responsive-16by9">
+  <!--          <iframe class="embed-responsive-item" src="//i.ytimg.com/vi/<%#= YouTubeRails.extract_video_id(room.video_url)%>/hqdefault.jpg"></iframe>-->
+          </div>
+          <img src="//i.ytimg.com/vi/<%= YouTubeRails.extract_video_id(room.video_url)%>/hqdefault.jpg" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title"><%= room.name %></h5>
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modal-<%= room.id %>">
+              Entrar
+            </button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: "username_modal" %>

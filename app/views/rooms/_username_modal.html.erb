@@ -1,0 +1,22 @@
+<% @rooms.each do |room| %>
+  <div class="modal fade" id="modal-<%= room.id %>" tabindex="-1" role="dialog" aria-labelledby="modal-label-<%= room.id %>" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-label-<%= room.id %>">Digite seu nome para entrar na sala</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= form_with(url: users_path, method: :post, remote: true) do |form| %>
+            <div class="form-group">
+              <%= form.hidden_field :room_id, :value => room.id %>
+              <%= form.label :username, "Nome" %>
+              <%= form.text_field :username, class: "form-control", required: true %>
+            </div>
+            <%= form.submit "Entrar", class: "btn btn-primary mt-2" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
