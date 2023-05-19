@@ -1,0 +1,11 @@
+<style>
+  <%= ".current-#{current_user&.id}" %> {
+      background-color: #DCF8C6 !important;
+      padding: 10px;
+
+  }
+  <%= ".other-#{current_user&.id}" %> {
+      display: flex;
+      justify-content: flex-end
+  }
+</style>
