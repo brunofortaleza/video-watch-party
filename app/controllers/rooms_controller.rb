@@ -27,15 +27,9 @@ class RoomsController < ApplicationController
       if @room.save
         format.html { redirect_to rooms_url, notice: 'Sala criada com sucesso.' }
       else
-        format.html { render :new, status: :unprocessqable_entity }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
-  end
-
-  def enter
-    @user = User.new(user_params)
-    session[:user_id] = @user.id
-    redirect_to room_url(params[:id])
   end
 
   private

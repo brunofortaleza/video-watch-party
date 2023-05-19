@@ -3,6 +3,8 @@ class Room < ApplicationRecord
   has_many :messages
   has_many :comments
 
+  validates :name, presence: true
+
   def self.ransackable_attributes(auth_object = nil)
     %w[name]
   end

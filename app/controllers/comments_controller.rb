@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_back(fallback_location: root_path)
     else
-      format.html { render :new, status: :unprocessable_entity }
+      redirect_to rooms_path, alert: 'Erro ao criar o comentário.'
     end
   end
 
