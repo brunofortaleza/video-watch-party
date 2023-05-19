@@ -1,0 +1,4 @@
+<%= form_with(url: comments_path(@room), method: :post, remote: true) do |form| %>
+  <%= form.text_area :content, class: "form-control", placeholder: "Digite o seu comentário", required: true %>
+  <%= form.submit "Enviar", class: "btn btn-primary mt-2" %>
+<% end %>
